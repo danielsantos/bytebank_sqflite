@@ -1,11 +1,11 @@
-import 'dart:async';
-
-import 'package:bytebank_sqflite/database/app_database.dart';
+import 'package:bytebank_sqflite/database/dao/contact_dao.dart';
 import 'package:bytebank_sqflite/models/contact.dart';
 import 'package:bytebank_sqflite/screens/contact_form.dart';
 import 'package:flutter/material.dart';
 
 class ContactsList extends StatelessWidget {
+
+  final ContactDao _dao = new ContactDao();
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ class ContactsList extends StatelessWidget {
       ),
       body: FutureBuilder/*<List<Contact>>*/(
         //initialData: List(),
-        future: findAll(), //Future.delayed(Duration(seconds: 1)).then((value) => findAll()),
+        future: _dao.findAll(), //Future.delayed(Duration(seconds: 1)).then((value) => findAll()),
         builder: (context, snapshot) {
 
           switch(snapshot.connectionState) {
